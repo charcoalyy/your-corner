@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PageList from './PageList';
 
 const Homepage = () => {
 
-    const [name, setName] = useState('homie');
+    const [name, setName] = useState('friend');
     const handleClick = () => setName(prompt("What's your name?"));
 
-    const [pages, setPages] = useState([]); // initial state of pages is empty
+    const [pages, setPages] = useState([]);
+
     class pageMaker { // class to use for creating objects that store basic page info
         constructor(title, date, id) {
             this.title = title;
@@ -13,13 +15,14 @@ const Homepage = () => {
             this.id = id;
         }
     }
-    const testFunction = () => {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        const newPage = new pageMaker(prompt("Title your new page"), `${mm}/${dd}/${yyyy}`, pages.length + 1); // create a new page object from the class
+
+    const newPage = () => {
+        const newPage = new pageMaker(prompt("Title your new page"), (new Date ()).toLocaleString(), (new Date()).getTime()); // create a new page object from the class
         setPages(pages => [...pages, newPage]); // append new page to state hook
+    }
+
+    const deletePage = (pageIdToRemove) => {
+        setPages(pages.filter(page => page.id !== pageIdToRemove));
     }
 
     return (
@@ -28,17 +31,16 @@ const Homepage = () => {
             <p>Pleased to see you, {name}.</p>
             <button onClick={handleClick}>Update your name</button>
             <br></br><br></br>
-        
-            <h3>Your current pages</h3>
-            <button onClick={testFunction}>Make a new page</button>
-            {pages.map((page) => (
-                <section className="page-preview" key={page.id}>
-                    <h4>{page.title}</h4>
-                    <p>Created {page.date}</p>
-                </section>
-            ))}
+            <PageList pages={pages} newPage={newPage} deletePage={deletePage} title="All current pages"/> 
         </section>
     );
 }
 
 export default Homepage;
+
+// FEATURES---------
+    // MAKE A NEW BUTTON THAT FILTERS/SEARCHES CURRENT PAGES... ie. set prop pages={pages.filter(xxx)} .... so move "make new" button to home.js?
+    // MAKE BUTTON TO CHANGE MAIN & SECONDARY COLOR
+
+// EXTRA---------------
+    // ADD A LOADING ANIMATION FR DELETION

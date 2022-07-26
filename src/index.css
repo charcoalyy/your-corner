@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   font-family: 'M Plus Rounded 1c';
+  --main-color: rgb(6, 118, 73);
+  --secondary-color: rgb(211, 222, 217);
 }
 
 .App {
@@ -12,13 +14,13 @@
 }
 
 .navbar {
-  color: rgb(6, 118, 73);
+  color: var(--main-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   line-height: unset;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgb(202, 217, 210);
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 .navbar h1 {
@@ -33,7 +35,7 @@
 }
 
 .navbar a:hover {
-  color: rgb(6, 118, 73);
+  color: var(--main-color);
 }
 
 .homepage {
@@ -49,35 +51,73 @@
 button {
   all: unset;
   cursor: pointer;
+  border-radius: 3px;
   font-weight: 300;
   font-size: 15px;
-  color: rgb(226, 226, 226);
-  background-color: rgb(6, 118, 73);
+  color: rgb(242, 242, 242);
+  background-color: var(--main-color);
   padding: 0.25rem 0.5rem;
   transition: all 0.3s;
 }
 
 button:hover {
-  background-color: rgb(202, 217, 210);
+  background-color: var(--secondary-color);
   color: rgb(20, 20, 20);
 }
 
 .page-preview {
   padding: 0.625rem 1rem;
   font-size: 15px;
-  border-left: 1px solid rgb(6, 118, 73);
+  border-left: 2px solid var(--secondary-color);
   margin: 0.5rem 0rem;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .page-preview:hover {
   cursor: pointer;
   border-left: none;
-  box-shadow: 0.2rem 0.2rem 5px rgb(202, 217, 210);
+  box-shadow: 0.15rem 0.15rem 3px var(--secondary-color);
+  border-left: 1px solid white;
 }
 
 .page-preview h4 {
   font-weight: 500;
   transition: all 0.3s;
   font-size: 20px;
+}
+
+.modal-background {
+  cursor: default;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(18, 18, 18, 0.8);
+  align-items: center;
+}
+
+.confirmation-modal {
+  text-align: center;
+  width: 40vw;
+  height: 25vh;
+  margin: auto;
+  box-shadow: 0rem 0rem 6px var(--main-color);
+  background-color: white;
+  border-radius: 3px;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-modal-options button {
+  margin: 0.25rem;
 }
