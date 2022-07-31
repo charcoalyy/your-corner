@@ -1,0 +1,14 @@
+{
+    "items": [
+        {
+            "title": "first item",
+            "desc": "first item in the database",
+            "id": 1
+        }, 
+        {
+            "title": "second item",
+            "desc": "second item in the database",
+            "id": 2
+        }
+    ]
+}

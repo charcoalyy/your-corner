@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageList from './PageList';
+import useFetch from './useFetch';
 
 const Homepage = () => {
 
@@ -24,6 +25,8 @@ const Homepage = () => {
     const deletePage = (pageIdToRemove) => {
         setPages(pages.filter(page => page.id !== pageIdToRemove));
     }
+    
+    const { data, isPending, error } = useFetch("http://localhost:8000/items"); // set these equal to a specific dataset fetched (in this case, items)
 
     return (
         <section className="homepage">
@@ -32,6 +35,18 @@ const Homepage = () => {
             <button onClick={handleClick}>Update your name</button>
             <br></br><br></br>
             <PageList pages={pages} newPage={newPage} deletePage={deletePage} title="All current pages"/> 
+            <br></br><br></br>
+
+            {isPending && <div>Loading database...</div>} {/* if data is pending, show loading message */}
+            {error && <div>{error}</div>} {/* if error present, show error message */}
+            <div className="database-test">{data && data.map((item) => { /* if data present, go through each data value and return these divs */
+                return (
+                    <section key={item.id}>
+                        <h3>{item.title}</h3>
+                        <p>{item.desc}</p>
+                    </section>
+                )
+            })}</div>
         </section>
     );
 }
