@@ -21,6 +21,7 @@
   line-height: unset;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--secondary-color);
+  margin-bottom: 2rem;
 }
 
 .navbar h1 {
@@ -120,4 +121,44 @@ button:hover {
 
 .confirmation-modal-options button {
   margin: 0.25rem;
+}
+
+.page-link {
+  text-decoration: none;
+  color: black;
+}
+
+.full-page h4 {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.make-new {
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.make-new label {
+  text-align: left;
+  display: block;
+}
+
+.make-new h2 {
+  color: var(--main-color);
+  margin-bottom: 1rem;
+}
+
+.make-new input, .make-new textarea {
+  width: 100%;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--secondary-color);
+  border-radius: 2.5px;
+  transition: all 0.2s;
+}
+
+.make-new input:focus, .make-new textarea:focus {
+  outline: none;
+  border: 1.5px solid var(--main-color);
 }

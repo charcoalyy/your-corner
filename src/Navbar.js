@@ -7,6 +7,7 @@ const Navbar = () => {
             <div className="links">
                 <a href="/">Home</a>
                 <a href="/settings">Settings</a>
+                <a href="/make-new">Make a Page</a>
             </div>
         </nav>
     );

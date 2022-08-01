@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import ConfirmAction from './Confirm';
 
+// change this into delete button ONLY
+
 const PageList = ({pages, newPage, title, deletePage}) => { // destructuring props to grab its elements directly for use
     const [openModal, setOpenModal] = useState(false);
     const [pageToDelete, setPageToDelete] = useState(null);

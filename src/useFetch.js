@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
-// custom hooks must always start with "use"
-
 const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
+    // const abortConst = new AbortController();
+
     useEffect(() => {
-        fetch(url) // returns a promise
+        fetch(url) // returns a promise , { signal: abortConst.signal }
             .then(res => {
                 if (!res.ok) {
                     throw Error('Could not fetch data for that resource')
@@ -21,9 +21,15 @@ const useFetch = (url) => {
                 setIsPending(false);
             })
             .catch((err) => {
-                setError(err.message);
-                setIsPending(false);
-            })
+                // if (err.name === 'AbortError') {
+                //     console.log('Fetch aborted'); // if fetch is aborted (ie. moved to a different page before data loads), then do not change state of is pending
+                // } else {
+                    setError(err.message);
+                    setIsPending(false);
+                // }
+            });
+
+        // return() => abortConst.abort();
     }, [url]) // refetches if url changes
 
     return {data, isPending, error} // return what is going to be used
