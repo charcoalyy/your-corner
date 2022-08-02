@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const MakePage = () => {
     const [ title, setTitle ] = useState("");
     const [ desc, setDesc ] = useState("");
     const [ body, setBody ] = useState("");
     const [ isPending, setIsPending ] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,10 +19,11 @@ const MakePage = () => {
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(item)
         }).then(() => {
-            setTitle("");
+            setTitle(""); // empties fields
             setDesc("");
             setBody("");
             setIsPending(false);
+            navigate('/') // redirect to home page when page published
         })
     }
 

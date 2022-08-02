@@ -40,12 +40,16 @@
 }
 
 .homepage {
-  padding-top: 2rem;
   color: rgb(20, 20, 20);
 }
 
 .homepage h2 {
   font-size: 25px;
+  font-weight: 600;
+}
+
+.homepage .section-title {
+  padding-top: 2rem;
   font-weight: 500;
 }
 
@@ -161,4 +165,12 @@ button:hover {
 .make-new input:focus, .make-new textarea:focus {
   outline: none;
   border: 1.5px solid var(--main-color);
+}
+
+.page-action {
+  text-decoration: none;
+}
+
+.full-page button {
+  margin: 1rem 0.5rem 1rem 0;
 }

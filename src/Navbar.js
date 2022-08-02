@@ -6,8 +6,8 @@ const Navbar = () => {
             <h1>Your Corner of the Internet</h1>
             <div className="links">
                 <a href="/">Home</a>
-                <a href="/settings">Settings</a>
                 <a href="/make-new">Make a Page</a>
+                <a href="/settings">Settings</a>
             </div>
         </nav>
     );
